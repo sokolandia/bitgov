@@ -8,7 +8,7 @@ All aspects of a fiscal system are captured in a set of smart-contracts that rep
 
 An interaction between users and the system is accomplished through the web and mobile clients that provide interfaces to examine contract&#39;s state and to make authorized changes to the contracts owned by the different actors of the system.
 
-**Voting District**
+## Voting District
 
 A contract that represents a group of people who are registered to vote on a set of bills. Contract can be owned and managed by a government entity, municipality, community organization or a private contractor. **Contract owner&#39;s purpose is to register voters** and to do so it may employ qualified personnel and have some form of identity verification procedure that may require presence of a voter in person at a physical address.
 
@@ -34,7 +34,7 @@ Voting district contract must implement following methods:
 - Add a bill&#39;s contract address to the list of district&#39;s bills. Can be invoked only by a voter registered with a district or by a district&#39;s contract owner.
 - Get all active bills from the list of district&#39;s bills. Bill is active if it has more than 50% of votes of district&#39;s registered voters.
 
-**Bill**
+## Bill
 
 A contract that represents a piece of tax legislation that is intended to fund some specific address called bill&#39;s beneficiary. **Bill&#39;s purpose is to allocate funds and to deliver them to the bill&#39;s beneficiary.** Anyone can publish a bill on the blockchain however the bill&#39;s contract owner can&#39;t change the state of the bill once it&#39;s published. All changes to the bill&#39;s state come from voting such that **it keeps addresses of the voters who voted in support of the bill.**
 
@@ -56,7 +56,7 @@ Bill contract must implement following methods:
 
 - Add/remove a voter&#39;s address to/from the list of bill&#39;s votes. If a voting district&#39;s address is specified it must check if the voter is in a list of the district&#39;s registered voters. May take as input multiple voter addresses when the votes are delegated.
 
-**Voter**
+## Voter
 
 A contract that represents an individual tax-paying citizen. It gives a voter an ability to register with the voting districts and to vote on specific pieces of legislation. Voter may choose which bills to support and with which districts to register. There also may be state-mandated districts the voter has to register with by law.
 
@@ -75,7 +75,7 @@ Voter contract must implement following methods:
 - Get the list of all bills that apply to the voter. The list includes all the bills in a voter&#39;s contract plus all active bills in a voter&#39;s voting districts.
 - Delegate the right to vote on contract owner&#39;s behalf to another voter. May be invoked only by a contract owner.
 
-**Organization**
+## Organization
 
 A contract that represents a corporation that employs tax-paying citizens. Its purpose is to transfer tokens to organization&#39;s employees from the contract&#39;s address.
 
@@ -83,7 +83,7 @@ Organization contract must implement following methods:
 
 - Pay employee. Takes as input employee&#39;s personal address, employee&#39;s voter address and an amount to pay (salary).
 
-**Token**
+## Token
 
 A token contract that extends ERC20 standard and in addition to Transfer method implements Transfer taxable income method. **Its purpose is to transfer taxable income from an employer to an employee and to re-distribute a fraction of that income in taxes.**
 
@@ -93,7 +93,7 @@ Token contract must implement following methods:
 
 - Transfer taxable income. Is invoked by an organization&#39;s contract.
 
-**Sovereign Token and Emission Bills**
+## Sovereign Token and Emission Bills
 
 An extension of an idea of the government being represented by a set of smart contracts is a nation-wide token. A sovereign token contract must specify a voting district contract&#39;s address that represents the most top-level administrative voting district of the land. Into that district voters may introduce an extended bill contract – Emission Bill.
 
